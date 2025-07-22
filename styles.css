@@ -1274,7 +1274,8 @@ section {
     position: relative;
     box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
-    min-width: 200px;
+    min-width: 450px;
+    overflow: visible;
 }
 
 .funding-bar:hover {
@@ -1283,39 +1284,44 @@ section {
 }
 
 .funding-bar.recovery { 
-    background-color: var(--black);
+    background-color: var(--black) !important;
     border: 3px solid var(--primary-color);
 }
 
+.funding-bar.recovery .funding-label,
+.funding-bar.recovery .funding-percentage {
+    color: var(--white) !important;
+}
+
 .funding-bar.harm { 
-    background-color: var(--primary-color); 
+    background-color: var(--primary-color) !important; 
     color: var(--black);
     border: 3px solid var(--black);
 }
 
 .funding-bar.harm .funding-label,
 .funding-bar.harm .funding-percentage {
-    color: var(--black);
+    color: var(--black) !important;
 }
 
 .funding-bar.early { 
-    background-color: var(--white);
-    color: var(--black);
-    border: 3px solid var(--black);
+    background-color: #FFFFFF !important;
+    color: #000000 !important;
+    border: 3px solid #000000 !important;
 }
 
 .funding-bar.early .funding-label,
 .funding-bar.early .funding-percentage {
-    color: var(--black);
+    color: var(--black) !important;
 }
 
 .funding-label {
     font-size: 1.1rem;
     letter-spacing: 0.5px;
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex: 1;
+    overflow: visible;
+    flex: 0 0 auto;
+    padding-right: 30px;
 }
 
 .funding-chart h3 {
@@ -1335,7 +1341,8 @@ section {
     font-weight: bold;
     font-size: 1.25rem;
     margin-left: auto;
-    padding-left: 1rem;
+    flex-shrink: 0;
+    padding-left: 10px;
 }
 
 .funding-legend {
@@ -2359,7 +2366,7 @@ section {
     .funding-bar {
         height: 60px;
         padding: 0 1rem;
-        min-width: 150px;
+        min-width: 280px;
     }
     
     .funding-label {
