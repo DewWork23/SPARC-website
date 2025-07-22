@@ -14,6 +14,8 @@
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     --max-width: 1200px;
+    --section-padding: 100px;
+    --section-padding-mobile: 60px;
 }
 
 * {
@@ -33,6 +35,7 @@ body {
     max-width: var(--max-width);
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -158,14 +161,24 @@ a:hover {
 
 .hero {
     background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-    padding: 80px 20px 40px;
+    padding: 120px 20px 80px;
     text-align: center;
+    min-height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     margin-bottom: 1.5rem;
     color: var(--text-primary);
+    line-height: 1.2;
 }
 
 .hero-content p {
@@ -179,15 +192,16 @@ a:hover {
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap;
 }
 
 .hero-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 3rem auto 0;
 }
 
 .stat-card {
@@ -546,6 +560,7 @@ section {
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
+        z-index: 1001;
     }
 
     .nav-menu {
@@ -565,7 +580,16 @@ section {
     }
 
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.5rem;
+    }
+    
+    .hero {
+        padding: 80px 20px 60px;
+        min-height: 500px;
+    }
+    
+    .hero-stats {
+        grid-template-columns: 1fr;
     }
 
     .hero-buttons {
@@ -617,14 +641,19 @@ section {
 
 /* Home page new sections */
 .intro-section {
-    padding: 80px 0;
+    padding: 100px 0;
     background-color: var(--bg-light);
 }
 
 .intro-content {
     text-align: center;
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
+}
+
+.intro-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .pathway-cards {
@@ -651,6 +680,15 @@ section {
 .pathway-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    color: var(--primary-color);
+}
+
+.pathway-icon svg {
+    stroke: var(--primary-color);
 }
 
 .pathway-link {
@@ -661,14 +699,18 @@ section {
 }
 
 .services-overview {
-    padding: 80px 0;
+    padding: 100px 0;
+    background-color: var(--bg-white);
 }
 
 .services-preview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 3rem 0;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin: 4rem 0;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .service-preview-card {
@@ -707,7 +749,7 @@ section {
 
 .why-sparc {
     background-color: var(--bg-light);
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .why-content {
@@ -715,6 +757,8 @@ section {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
+    max-width: var(--max-width);
+    margin: 0 auto;
 }
 
 .impact-highlights {
@@ -747,6 +791,9 @@ section {
 .consortium-graphic {
     position: relative;
     height: 400px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -789,11 +836,11 @@ section {
     padding: 0.5rem;
 }
 
-.partner-circle.healthcare { top: 0; left: 50%; transform: translateX(-50%); }
-.partner-circle.community { top: 50%; right: 0; transform: translateY(-50%); }
-.partner-circle.government { bottom: 0; left: 50%; transform: translateX(-50%); }
-.partner-circle.faith { top: 50%; left: 0; transform: translateY(-50%); }
-.partner-circle.recovery { top: 20%; right: 20%; }
+.partner-circle.healthcare { top: 10px; left: 50%; transform: translateX(-50%); }
+.partner-circle.community { top: 50%; right: 10px; transform: translateY(-50%); }
+.partner-circle.government { bottom: 10px; left: 50%; transform: translateX(-50%); }
+.partner-circle.faith { top: 50%; left: 10px; transform: translateY(-50%); }
+.partner-circle.recovery { top: 25%; right: 25%; }
 
 .impact-cta {
     text-align: center;
@@ -805,7 +852,8 @@ section {
 }
 
 .quick-resources {
-    padding: 80px 0;
+    padding: 100px 0;
+    background-color: var(--bg-white);
 }
 
 .emergency-resources {
@@ -869,6 +917,15 @@ section {
 .resource-link-icon {
     font-size: 2rem;
     margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+    color: var(--primary-color);
+}
+
+.resource-link-icon svg {
+    stroke: var(--primary-color);
 }
 
 .resource-link-card h4 {
@@ -888,7 +945,7 @@ section {
 
 .news-updates {
     background-color: var(--bg-light);
-    padding: 80px 0;
+    padding: 100px 0;
 }
 
 .updates-grid {
@@ -924,7 +981,7 @@ section {
 }
 
 .final-cta {
-    padding: 80px 0;
+    padding: 100px 0;
     background-color: var(--primary-color);
     color: white;
     text-align: center;
@@ -2029,11 +2086,55 @@ section {
         grid-template-columns: 1fr;
     }
     
+    .service-preview-card.featured {
+        transform: none;
+    }
+    
     .partner-circles {
         display: none;
     }
     
+    .central-hub {
+        position: static;
+        margin: 0 auto;
+    }
+    
+    .impact-highlights {
+        margin-top: 2rem;
+    }
+    
+    .impact-highlight {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    
+    .impact-number {
+        min-width: auto;
+    }
+    
     .contact-form .form-row {
         grid-template-columns: 1fr;
+    }
+    
+    .resource-links-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .updates-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .intro-section,
+    .services-overview,
+    .why-sparc,
+    .quick-resources,
+    .news-updates,
+    .final-cta {
+        padding: 60px 0;
     }
 }
