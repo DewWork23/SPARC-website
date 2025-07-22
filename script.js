@@ -115,10 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(activeStyle);
 
-    const counters = document.querySelectorAll('.stat-card h3, .impact-number, .category-funding, .percentage');
+    const counters = document.querySelectorAll('.stat-card h3[data-count], .impact-number[data-count]');
     const animateCounter = (counter) => {
-        const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
-        const suffix = counter.textContent.replace(/[0-9]/g, '');
+        const target = parseInt(counter.getAttribute('data-count'));
+        const originalText = counter.textContent;
+        
+        // Extract prefix and suffix from original text
+        const prefix = originalText.match(/^[\$]/) ? '$' : '';
+        const suffix = originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '';
+        
         const duration = 2000;
         const steps = 50;
         const increment = target / steps;
@@ -127,10 +132,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
-                counter.textContent = target + suffix;
+                counter.textContent = prefix + target + suffix;
                 clearInterval(timer);
             } else {
-                counter.textContent = Math.floor(current) + suffix;
+                counter.textContent = prefix + Math.floor(current) + suffix;
             }
         }, duration / steps);
     };
@@ -145,12 +150,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
 
     counters.forEach(counter => {
-        if (counter.textContent.match(/\d/)) {
-            const originalValue = counter.textContent;
-            counter.textContent = '0' + counter.textContent.replace(/[0-9]/g, '');
-            counter.setAttribute('data-target', originalValue);
-            counterObserver.observe(counter);
-        }
+        const originalText = counter.textContent;
+        const prefix = originalText.match(/^[\$]/) ? '$' : '';
+        const suffix = originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '';
+        counter.textContent = prefix + '0' + suffix;
+        counterObserver.observe(counter);
     });
 
     const createParticle = () => {
