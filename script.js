@@ -2,39 +2,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-menu a');
-    const sections = document.querySelectorAll('section[id]');
 
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
-        
-        const spans = navToggle.querySelectorAll('span');
-        spans[0].style.transform = navMenu.classList.contains('active') 
-            ? 'rotate(45deg) translateY(8px)' 
-            : 'none';
-        spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
-        spans[2].style.transform = navMenu.classList.contains('active') 
-            ? 'rotate(-45deg) translateY(-8px)' 
-            : 'none';
-    });
+    if (navToggle) {
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            
+            const spans = navToggle.querySelectorAll('span');
+            spans[0].style.transform = navMenu.classList.contains('active') 
+                ? 'rotate(45deg) translateY(8px)' 
+                : 'none';
+            spans[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = navMenu.classList.contains('active') 
+                ? 'rotate(-45deg) translateY(-8px)' 
+                : 'none';
+        });
+    }
 
     navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.getAttribute('href').startsWith('#')) {
-                e.preventDefault();
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
                 navMenu.classList.remove('active');
-                
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const navHeight = document.querySelector('.navbar').offsetHeight;
-                    const targetPosition = targetSection.offsetTop - navHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
             }
         });
     });
@@ -79,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-    const animateElements = document.querySelectorAll('.service-card, .stat-card, .resource-card');
+    const animateElements = document.querySelectorAll('.service-card, .stat-card, .resource-card, .pathway-card, .service-preview-card, .approach-card, .value-card, .detailed-service, .update-card, .goal-card, .story-card, .outcome');
     animateElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(20px)';
@@ -96,26 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    const highlightActiveSection = () => {
-        const scrollY = window.scrollY;
-        
-        sections.forEach(section => {
-            const sectionHeight = section.offsetHeight;
-            const sectionTop = section.offsetTop - 100;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
-                        link.classList.add('active');
-                    }
-                });
+    const highlightCurrentPage = () => {
+        const currentPath = window.location.pathname;
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === currentPath || 
+                (currentPath.endsWith('/') && link.getAttribute('href') === 'index.html') ||
+                (currentPath.endsWith('/index.html') && link.getAttribute('href') === 'index.html')) {
+                link.classList.add('active');
             }
         });
     };
 
-    window.addEventListener('scroll', highlightActiveSection);
+    highlightCurrentPage();
 
     const activeStyle = document.createElement('style');
     activeStyle.textContent = `
@@ -135,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(activeStyle);
 
-    const counters = document.querySelectorAll('.stat-card h3');
+    const counters = document.querySelectorAll('.stat-card h3, .impact-number, .category-funding, .percentage');
     const animateCounter = (counter) => {
         const target = parseInt(counter.textContent.replace(/[^0-9]/g, ''));
         const suffix = counter.textContent.replace(/[0-9]/g, '');
@@ -208,8 +188,18 @@ document.addEventListener('DOMContentLoaded', () => {
         animation.onfinish = () => particle.remove();
     };
 
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 768 && document.querySelector('.hero')) {
         setInterval(createParticle, 3000);
+    }
+
+    const newsletterForm = document.querySelector('.newsletter-form');
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = newsletterForm.querySelector('input[type="email"]').value;
+            alert('Thank you for subscribing! We\'ll keep you updated.');
+            newsletterForm.reset();
+        });
     }
 
     console.log('SPARC website initialized successfully!');

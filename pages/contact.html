@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - SPARC</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>SPARC</h1>
+                <span class="nav-tagline">Southeastern Prevention & Addiction Recovery Resource Center</span>
+            </div>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="impact.html">Impact</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p class="page-hero-subtitle">We're here to help. Reach out for support, information, or partnership opportunities.</p>
+        </div>
+    </section>
+
+    <section class="contact-options">
+        <div class="container">
+            <div class="urgent-help">
+                <div class="urgent-banner">
+                    <h2>Need Immediate Help?</h2>
+                    <p>If you or someone you know is experiencing a crisis, please call:</p>
+                    <div class="crisis-numbers">
+                        <div class="crisis-number">
+                            <h3>24/7 Crisis Line</h3>
+                            <a href="tel:1800XXXXXXX" class="phone-link">1-800-XXX-XXXX</a>
+                        </div>
+                        <div class="crisis-number">
+                            <h3>National Suicide Prevention</h3>
+                            <a href="tel:988" class="phone-link">988</a>
+                        </div>
+                        <div class="crisis-number">
+                            <h3>Emergency Services</h3>
+                            <a href="tel:911" class="phone-link">911</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-main">
+                <div class="contact-info-section">
+                    <h2>Get in Touch</h2>
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">📞</div>
+                            <h3>General Inquiries</h3>
+                            <p>Monday - Friday: 8:00 AM - 5:00 PM</p>
+                            <a href="tel:910XXXXXXX" class="contact-link">(910) XXX-XXXX</a>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">✉️</div>
+                            <h3>Email Us</h3>
+                            <p>We respond within 24 business hours</p>
+                            <a href="mailto:info@sparcnc.org" class="contact-link">info@sparcnc.org</a>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon">📍</div>
+                            <h3>Visit Us</h3>
+                            <p>SPARC Resource Center</p>
+                            <address>
+                                123 Main Street<br>
+                                Lumberton, NC 28358
+                            </address>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <h2>Send Us a Message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">How can we help you? *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Please select...</option>
+                                <option value="help-individual">I need help for myself</option>
+                                <option value="help-family">I need help for a family member</option>
+                                <option value="services-info">Information about services</option>
+                                <option value="partnership">Partnership opportunities</option>
+                                <option value="volunteer">Volunteer opportunities</option>
+                                <option value="media">Media inquiry</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="county">County</label>
+                            <input type="text" id="county" name="county" placeholder="e.g., Robeson County">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" rows="6" required></textarea>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" name="newsletter" value="yes">
+                                I would like to receive updates about SPARC programs and services
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                            <p class="form-note">* Required fields</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="specialized-contacts">
+        <div class="container">
+            <h2>Specialized Support</h2>
+            <div class="specialized-grid">
+                <div class="specialized-card">
+                    <h3>For Healthcare Providers</h3>
+                    <p>Provider relations and clinical consultation</p>
+                    <p class="contact-detail">providers@sparcnc.org</p>
+                    <p class="contact-detail">(910) XXX-XXXX ext. 201</p>
+                </div>
+                <div class="specialized-card">
+                    <h3>For Media Inquiries</h3>
+                    <p>Press releases and interview requests</p>
+                    <p class="contact-detail">media@sparcnc.org</p>
+                    <p class="contact-detail">(910) XXX-XXXX ext. 205</p>
+                </div>
+                <div class="specialized-card">
+                    <h3>For Partners</h3>
+                    <p>Consortium membership and collaboration</p>
+                    <p class="contact-detail">partners@sparcnc.org</p>
+                    <p class="contact-detail">(910) XXX-XXXX ext. 203</p>
+                </div>
+                <div class="specialized-card">
+                    <h3>For Donations</h3>
+                    <p>Support our mission with a contribution</p>
+                    <p class="contact-detail">donate@sparcnc.org</p>
+                    <p class="contact-detail">(910) XXX-XXXX ext. 204</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="location-section">
+        <div class="container">
+            <h2>Find Us</h2>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>SPARC Resource Center</h3>
+                    <address>
+                        123 Main Street<br>
+                        Lumberton, NC 28358<br>
+                        <br>
+                        <strong>Hours of Operation:</strong><br>
+                        Monday - Friday: 8:00 AM - 5:00 PM<br>
+                        Saturday: 9:00 AM - 1:00 PM<br>
+                        Sunday: Closed<br>
+                        <br>
+                        <strong>24/7 Crisis Support Available</strong>
+                    </address>
+                    
+                    <div class="directions">
+                        <h4>Directions:</h4>
+                        <p>Located in downtown Lumberton, one block west of the courthouse. Free parking available.</p>
+                        <a href="#" class="btn btn-secondary">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <div class="map-placeholder">
+                        <div class="map-content">
+                            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="400" height="300" fill="#e5e7eb"/>
+                                <circle cx="200" cy="150" r="10" fill="#ef4444"/>
+                                <path d="M200 140 Q190 120 200 100 Q210 120 200 140" fill="#ef4444"/>
+                                <text x="200" y="180" text-anchor="middle" fill="#6b7280" font-family="Inter" font-size="14">SPARC Resource Center</text>
+                                <text x="200" y="200" text-anchor="middle" fill="#6b7280" font-family="Inter" font-size="12">Lumberton, NC</text>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="partner-locations">
+        <div class="container">
+            <h2>Partner Locations</h2>
+            <p class="section-intro">Services are also available at these partner locations throughout Robeson County:</p>
+            <div class="partners-grid">
+                <div class="partner-location">
+                    <h4>Southeastern Health</h4>
+                    <p>300 W 27th St, Lumberton</p>
+                    <p class="partner-services">MAT, Detox, Outpatient</p>
+                </div>
+                <div class="partner-location">
+                    <h4>Robeson County Health Dept</h4>
+                    <p>460 Country Club Blvd, Lumberton</p>
+                    <p class="partner-services">Testing, Naloxone, Referrals</p>
+                </div>
+                <div class="partner-location">
+                    <h4>Hope Alive Recovery</h4>
+                    <p>123 Recovery Way, Pembroke</p>
+                    <p class="partner-services">Peer Support, Groups</p>
+                </div>
+                <div class="partner-location">
+                    <h4>Faith Community Church</h4>
+                    <p>456 Church St, Red Springs</p>
+                    <p class="partner-services">Support Groups, Food Pantry</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Don't Wait to Reach Out</h2>
+            <p>Whether you need help, want to help, or just have questions - we're here for you</p>
+            <div class="cta-buttons">
+                <a href="tel:1800XXXXXXX" class="btn btn-primary">Call Now</a>
+                <a href="services.html" class="btn btn-secondary">View Services</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SPARC</h3>
+                    <p>Southeastern Prevention and Addiction Recovery Resource Center</p>
+                    <p>Funded by the Kate B. Reynolds Foundation</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Emergency Resources</h4>
+                    <p><strong>Crisis Line:</strong> 1-800-XXX-XXXX</p>
+                    <p><strong>National Suicide Prevention:</strong> 988</p>
+                    <p><strong>SAMHSA Helpline:</strong> 1-800-662-4357</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SPARC. All rights reserved. | Serving Robeson County, North Carolina</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
