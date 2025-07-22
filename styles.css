@@ -1,18 +1,37 @@
 :root {
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --secondary-color: #0891b2;
+    /* UNCP Brand Colors */
+    --primary-color: #FFB500; /* UNCP Gold */
+    --primary-dark: #CC9200; /* Darker gold for hover states */
+    --primary-light: #FFCC33; /* Lighter gold */
+    --black: #000000; /* UNCP Black */
+    --black-light: #1a1a1a; /* Slightly lighter black */
+    --white: #FFFFFF; /* White */
+    
+    /* Supporting Colors */
+    --secondary-color: #666666; /* Gray for secondary elements */
     --success-color: #10b981;
-    --warning-color: #f59e0b;
+    --warning-color: #FFB500; /* Using gold for warnings */
     --danger-color: #ef4444;
-    --text-primary: #1f2937;
-    --text-secondary: #6b7280;
-    --bg-light: #f9fafb;
-    --bg-white: #ffffff;
+    
+    /* Text Colors */
+    --text-primary: #000000; /* Black for primary text */
+    --text-secondary: #666666; /* Gray for secondary text */
+    --text-on-gold: #000000; /* Black text on gold backgrounds */
+    --text-on-black: #FFFFFF; /* White text on black backgrounds */
+    
+    /* Background Colors */
+    --bg-light: #f9f9f9; /* Light gray background */
+    --bg-white: #FFFFFF;
+    --bg-black: #000000;
+    --bg-gold: #FFB500;
+    
+    /* Borders and Shadows */
     --border-color: #e5e7eb;
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    
+    /* Layout */
     --max-width: 1200px;
     --section-padding: 100px;
     --section-padding-mobile: 60px;
@@ -77,24 +96,26 @@ a:hover {
 
 .btn-primary {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--text-on-gold);
+    font-weight: 600;
 }
 
 .btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    color: var(--text-on-gold);
 }
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    color: var(--black);
+    border: 2px solid var(--black);
 }
 
 .btn-secondary:hover {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
 }
 
 .navbar {
@@ -103,6 +124,7 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 1000;
+    border-bottom: 3px solid var(--primary-color);
 }
 
 .nav-container {
@@ -160,13 +182,24 @@ a:hover {
 }
 
 .hero {
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
     padding: 120px 20px 80px;
     text-align: center;
     min-height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--black) 25%, var(--primary-color) 25%, var(--primary-color) 75%, var(--black) 75%);
 }
 
 .hero-content {
@@ -209,6 +242,7 @@ a:hover {
     padding: 2rem;
     border-radius: 12px;
     box-shadow: var(--shadow-md);
+    border: 2px solid var(--primary-color);
 }
 
 .stat-card h3 {
@@ -250,10 +284,11 @@ section {
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
     margin-top: 2rem;
+    border-left: 5px solid var(--primary-color);
 }
 
 .mission-box h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 1rem;
 }
 
@@ -295,6 +330,10 @@ section {
 .service-icon {
     color: var(--primary-color);
     margin-bottom: 1.5rem;
+}
+
+.service-icon svg {
+    stroke: var(--primary-color);
 }
 
 .service-card h3 {
@@ -517,9 +556,10 @@ section {
 }
 
 .footer {
-    background-color: var(--text-primary);
+    background-color: var(--black);
     color: white;
     padding: 3rem 0 1rem;
+    border-top: 5px solid var(--primary-color);
 }
 
 .footer-content {
@@ -621,20 +661,33 @@ section {
 
 /* Multi-page specific styles */
 .page-hero {
-    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    background: linear-gradient(135deg, var(--black) 0%, var(--black-light) 100%);
     color: white;
     padding: 120px 20px 80px;
     text-align: center;
+    position: relative;
+}
+
+.page-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background-color: var(--primary-color);
 }
 
 .page-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: var(--primary-color);
 }
 
 .page-hero-subtitle {
     font-size: 1.25rem;
-    opacity: 0.9;
+    color: var(--white);
+    opacity: 0.95;
     max-width: 600px;
     margin: 0 auto;
 }
@@ -670,11 +723,13 @@ section {
     box-shadow: var(--shadow-md);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
 }
 
 .pathway-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
+    border-color: var(--primary-color);
 }
 
 .pathway-icon {
@@ -725,6 +780,17 @@ section {
 .service-preview-card.featured {
     border-color: var(--primary-color);
     transform: scale(1.05);
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.service-preview-card.featured h3,
+.service-preview-card.featured p {
+    color: var(--white);
+}
+
+.service-preview-card.featured .service-icon svg {
+    stroke: var(--primary-color);
 }
 
 .service-highlights {
@@ -735,11 +801,12 @@ section {
 }
 
 .service-highlights span {
-    background-color: var(--bg-light);
+    background-color: var(--primary-color);
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--black);
+    font-weight: 500;
 }
 
 .services-cta {
@@ -775,9 +842,12 @@ section {
 .impact-number {
     font-size: 2.5rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--black);
     min-width: 120px;
     display: inline-block;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
 }
 
 .impact-description h4 {
@@ -804,8 +874,8 @@ section {
     position: absolute;
     width: 120px;
     height: 120px;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--black);
+    color: var(--primary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -813,6 +883,7 @@ section {
     font-weight: bold;
     font-size: 1.25rem;
     z-index: 2;
+    border: 4px solid var(--primary-color);
 }
 
 .partner-circles {
@@ -825,16 +896,17 @@ section {
     position: absolute;
     width: 80px;
     height: 80px;
-    background-color: var(--bg-white);
-    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    border: 2px solid var(--black);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.875rem;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     padding: 0.5rem;
+    color: var(--black);
 }
 
 .partner-circle.healthcare { top: 10px; left: 50%; transform: translateX(-50%); }
@@ -862,24 +934,29 @@ section {
 }
 
 .emergency-card {
-    background-color: var(--danger-color);
+    background-color: var(--black);
     color: white;
     padding: 2rem;
     border-radius: 12px;
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    border: 4px solid var(--primary-color);
 }
 
 .emergency-card h3 {
-    color: white;
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
+}
+
+.emergency-card h3 svg {
+    stroke: var(--primary-color);
 }
 
 .emergency-btn {
     display: inline-block;
-    background-color: white;
-    color: var(--danger-color);
+    background-color: var(--primary-color);
+    color: var(--black);
     padding: 1rem 2rem;
     border-radius: 8px;
     font-weight: bold;
@@ -890,6 +967,7 @@ section {
 .emergency-btn:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    background-color: var(--primary-dark);
 }
 
 .resource-links-grid {
@@ -983,9 +1061,20 @@ section {
 
 .final-cta {
     padding: 100px 0;
-    background-color: var(--primary-color);
+    background-color: var(--black);
     color: white;
     text-align: center;
+    position: relative;
+}
+
+.final-cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color) 25%, var(--black) 25%, var(--black) 75%, var(--primary-color) 75%);
 }
 
 .cta-content h2 {
@@ -996,7 +1085,8 @@ section {
 .cta-content p {
     font-size: 1.125rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    color: var(--white);
+    opacity: 0.95;
 }
 
 .btn-large {
@@ -1028,11 +1118,12 @@ section {
 }
 
 .mission-statement {
-    background-color: var(--bg-light);
+    background-color: var(--primary-color);
     padding: 2rem;
     border-radius: 12px;
-    border-left: 4px solid var(--primary-color);
+    border-left: 5px solid var(--black);
     margin-bottom: 2rem;
+    color: var(--black);
 }
 
 .approach-cards {
@@ -1079,7 +1170,7 @@ section {
     height: 16px;
     background-color: var(--primary-color);
     border-radius: 50%;
-    border: 3px solid var(--bg-white);
+    border: 3px solid var(--black);
     box-shadow: var(--shadow-sm);
 }
 
@@ -1178,8 +1269,8 @@ section {
     font-weight: 500;
 }
 
-.funding-bar.recovery { background-color: var(--success-color); }
-.funding-bar.harm { background-color: var(--warning-color); }
+.funding-bar.recovery { background-color: var(--black); }
+.funding-bar.harm { background-color: var(--primary-color); color: var(--black); }
 .funding-bar.early { background-color: var(--secondary-color); }
 
 .funding-total {
@@ -1299,13 +1390,14 @@ section {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background-color: var(--primary-color);
-    color: white;
+    background-color: var(--black);
+    color: var(--primary-color);
     border-radius: 50%;
     line-height: 60px;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
+    border: 3px solid var(--primary-color);
 }
 
 /* Impact page specific */
@@ -2045,20 +2137,20 @@ section {
 /* CTA section updates */
 .cta-section {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--black);
     padding: 60px 0;
     text-align: center;
 }
 
 .cta-section h2 {
-    color: white;
+    color: var(--black);
     margin-bottom: 1rem;
 }
 
 .cta-section p {
     font-size: 1.125rem;
     margin-bottom: 2rem;
-    opacity: 0.9;
+    color: var(--black);
 }
 
 .cta-buttons {

@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .nav-menu a.active {
             color: var(--primary-color);
             position: relative;
+            font-weight: 600;
         }
         .nav-menu a.active::after {
             content: '';
@@ -109,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             bottom: -5px;
             left: 0;
             right: 0;
-            height: 2px;
+            height: 3px;
             background-color: var(--primary-color);
         }
     `;
