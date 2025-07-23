@@ -850,8 +850,12 @@ section {
     color: var(--white);
 }
 
+.service-preview-card.featured .service-icon {
+    background-color: var(--primary-color);
+}
+
 .service-preview-card.featured .service-icon svg {
-    stroke: var(--primary-color);
+    stroke: var(--black);
 }
 
 .service-highlights {

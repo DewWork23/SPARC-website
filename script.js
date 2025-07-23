@@ -118,12 +118,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const counters = document.querySelectorAll('.stat-card h3[data-count], .impact-number[data-count]');
     const animateCounter = (counter) => {
-        const target = parseInt(counter.getAttribute('data-count'));
+        const target = parseFloat(counter.getAttribute('data-count'));
         const originalText = counter.textContent;
         
-        // Extract prefix and suffix from original text
+        // Extract prefix and suffix from original text or data attribute
         const prefix = originalText.match(/^[\$]/) ? '$' : '';
-        const suffix = originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '';
+        const suffix = counter.getAttribute('data-suffix') || (originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '');
         
         const duration = 2000;
         const steps = 50;
@@ -133,17 +133,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
-                // Format large numbers with decimals for millions
+                // For decimal values, preserve the decimal places
                 let displayValue = target;
-                if (suffix === 'M' && target >= 1000) {
-                    displayValue = (target / 1000).toFixed(3);
+                if (target % 1 !== 0) {
+                    displayValue = target.toFixed(3);
                 }
                 counter.textContent = prefix + displayValue + suffix;
                 clearInterval(timer);
             } else {
-                let displayValue = Math.floor(current);
-                if (suffix === 'M' && displayValue >= 1000) {
-                    displayValue = (displayValue / 1000).toFixed(3);
+                // For decimal values, show progress with decimals
+                let displayValue = current;
+                if (target % 1 !== 0) {
+                    displayValue = current.toFixed(3);
+                } else {
+                    displayValue = Math.floor(current);
                 }
                 counter.textContent = prefix + displayValue + suffix;
             }
@@ -162,10 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
     counters.forEach(counter => {
         const originalText = counter.textContent;
         const prefix = originalText.match(/^[\$]/) ? '$' : '';
-        const suffix = originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '';
-        // Format initial display for millions
+        const suffix = counter.getAttribute('data-suffix') || (originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '');
+        const target = parseFloat(counter.getAttribute('data-count'));
+        
+        // Format initial display
         let initialValue = '0';
-        if (suffix === 'M') {
+        if (target % 1 !== 0) {
             initialValue = '0.000';
         }
         counter.textContent = prefix + initialValue + suffix;
