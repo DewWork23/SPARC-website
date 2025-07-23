@@ -133,10 +133,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const timer = setInterval(() => {
             current += increment;
             if (current >= target) {
-                counter.textContent = prefix + target + suffix;
+                // Format large numbers with decimals for millions
+                let displayValue = target;
+                if (suffix === 'M' && target >= 1000) {
+                    displayValue = (target / 1000).toFixed(3);
+                }
+                counter.textContent = prefix + displayValue + suffix;
                 clearInterval(timer);
             } else {
-                counter.textContent = prefix + Math.floor(current) + suffix;
+                let displayValue = Math.floor(current);
+                if (suffix === 'M' && displayValue >= 1000) {
+                    displayValue = (displayValue / 1000).toFixed(3);
+                }
+                counter.textContent = prefix + displayValue + suffix;
             }
         }, duration / steps);
     };
@@ -154,7 +163,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const originalText = counter.textContent;
         const prefix = originalText.match(/^[\$]/) ? '$' : '';
         const suffix = originalText.match(/[%MK\+]+$/) ? originalText.match(/[%MK\+]+$/)[0] : '';
-        counter.textContent = prefix + '0' + suffix;
+        // Format initial display for millions
+        let initialValue = '0';
+        if (suffix === 'M') {
+            initialValue = '0.000';
+        }
+        counter.textContent = prefix + initialValue + suffix;
         counterObserver.observe(counter);
     });
 
