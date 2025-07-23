@@ -73,13 +73,18 @@ p {
 }
 
 a {
-    color: var(--primary-color);
+    color: var(--black);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
 }
 
 a:hover {
-    color: var(--primary-dark);
+    background-color: var(--primary-color);
+    color: var(--black);
+    padding: 0 4px;
+    margin: 0 -4px;
+    border-bottom: 2px solid var(--black);
 }
 
 .btn {
@@ -138,8 +143,21 @@ a:hover {
 
 .nav-brand h1 {
     font-size: 1.75rem;
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 0;
+    position: relative;
+    padding-left: 15px;
+}
+
+.nav-brand h1::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 80%;
+    background-color: var(--primary-color);
 }
 
 .nav-tagline {
@@ -174,11 +192,18 @@ a:hover {
 .nav-menu a {
     color: var(--text-primary);
     font-weight: 500;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border-bottom: none;
 }
 
 .nav-menu a:hover {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--black);
+    padding: 4px 8px;
+    margin: 0;
+    border-bottom: none;
 }
 
 .hero {
@@ -247,8 +272,12 @@ a:hover {
 
 .stat-card h3 {
     font-size: 2.5rem;
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 0.5rem;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .stat-card p {
@@ -328,12 +357,20 @@ section {
 }
 
 .service-icon {
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 1.5rem;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 2rem;
 }
 
 .service-icon svg {
-    stroke: var(--primary-color);
+    stroke: var(--black);
 }
 
 .service-card h3 {
@@ -456,7 +493,11 @@ section {
 
 .funding-card h4 {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .funding-card p {
@@ -478,8 +519,10 @@ section {
 }
 
 .resource-card h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
 }
 
 .resource-card ul {
@@ -515,8 +558,12 @@ section {
 }
 
 .contact-method h4 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 0.5rem;
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    display: inline-block;
 }
 
 .contact-form {
@@ -681,7 +728,8 @@ section {
 .page-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--primary-color);
+    color: var(--white);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .page-hero-subtitle {
@@ -739,18 +787,31 @@ section {
     align-items: center;
     justify-content: center;
     height: 80px;
-    color: var(--primary-color);
+    width: 80px;
+    background-color: var(--primary-color);
+    color: var(--black);
+    border-radius: 50%;
+    margin: 0 auto 1rem;
 }
 
 .pathway-icon svg {
-    stroke: var(--primary-color);
+    stroke: var(--black);
 }
 
 .pathway-link {
     display: inline-block;
     margin-top: 1rem;
-    color: var(--primary-color);
+    color: var(--black);
     font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.pathway-link:hover {
+    background-color: var(--primary-color);
+    padding: 2px 8px;
+    margin: 1rem -8px 0;
+    border-bottom: 2px solid var(--black);
 }
 
 .services-overview {
@@ -848,6 +909,7 @@ section {
     background-color: var(--primary-color);
     padding: 0.5rem 1rem;
     border-radius: 8px;
+    border: 2px solid var(--black);
 }
 
 .impact-description h4 {
@@ -874,8 +936,8 @@ section {
     position: absolute;
     width: 120px;
     height: 120px;
-    background-color: var(--black);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--black);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -883,7 +945,7 @@ section {
     font-weight: bold;
     font-size: 1.25rem;
     z-index: 2;
-    border: 4px solid var(--primary-color);
+    border: 4px solid var(--black);
 }
 
 .partner-circles {
@@ -945,12 +1007,16 @@ section {
 }
 
 .emergency-card h3 {
-    color: var(--primary-color);
+    color: var(--white);
     margin-bottom: 0.5rem;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .emergency-card h3 svg {
-    stroke: var(--primary-color);
+    stroke: var(--black);
 }
 
 .emergency-btn {
@@ -1000,11 +1066,15 @@ section {
     align-items: center;
     justify-content: center;
     height: 60px;
-    color: var(--primary-color);
+    width: 60px;
+    background-color: var(--primary-color);
+    color: var(--black);
+    border-radius: 12px;
+    margin: 0 auto 0.5rem;
 }
 
 .resource-link-icon svg {
-    stroke: var(--primary-color);
+    stroke: var(--black);
 }
 
 .resource-link-card h4 {
@@ -1042,10 +1112,14 @@ section {
 }
 
 .update-date {
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
     font-weight: 500;
     font-size: 0.875rem;
     margin-bottom: 0.5rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
 }
 
 .update-card h3 {
@@ -1055,8 +1129,17 @@ section {
 .update-link {
     display: inline-block;
     margin-top: 1rem;
-    color: var(--primary-color);
+    color: var(--black);
     font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.update-link:hover {
+    background-color: var(--primary-color);
+    padding: 2px 8px;
+    margin: 1rem -8px 0;
+    border-bottom: 2px solid var(--black);
 }
 
 .final-cta {
@@ -1113,8 +1196,10 @@ section {
 }
 
 .content-section h2 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 2rem;
+    border-left: 5px solid var(--primary-color);
+    padding-left: 1rem;
 }
 
 .mission-statement {
@@ -1175,8 +1260,12 @@ section {
 }
 
 .timeline-content h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 0.5rem;
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    display: inline-block;
 }
 
 .leadership-section {
@@ -1402,9 +1491,13 @@ section {
 }
 
 .funding-total h3 {
-    color: var(--primary-color);
+    color: var(--white);
     font-size: 1.75rem;
     margin: 0 0 0.5rem 0;
+    background-color: var(--primary-color);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+    display: inline-block;
 }
 
 .funding-total p {
@@ -1434,7 +1527,10 @@ section {
 .category-funding {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
 }
 
 .category-description {
@@ -1456,8 +1552,10 @@ section {
 }
 
 .detailed-service h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
 }
 
 .service-features {
@@ -1522,14 +1620,14 @@ section {
     display: inline-block;
     width: 60px;
     height: 60px;
-    background-color: var(--black);
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--black);
     border-radius: 50%;
     line-height: 60px;
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    border: 3px solid var(--primary-color);
+    border: 3px solid var(--black);
 }
 
 /* Impact page specific */
@@ -1593,8 +1691,12 @@ section {
 
 .year-label {
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
     margin-bottom: 1rem;
+    display: inline-block;
 }
 
 .partner-bar {
@@ -1693,8 +1795,12 @@ section {
 .percentage {
     font-size: 2rem;
     font-weight: bold;
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
     margin-bottom: 1rem;
+    display: inline-block;
 }
 
 .destination {
@@ -1771,8 +1877,12 @@ section {
 
 .highlight h4 {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
     margin-bottom: 0.5rem;
+    display: inline-block;
 }
 
 .success-metrics {
@@ -1914,10 +2024,10 @@ section {
 }
 
 .resource-section h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 2rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid var(--border-color);
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .resource-grid {
@@ -1948,8 +2058,17 @@ section {
 .resource-link {
     display: inline-block;
     margin-top: 1rem;
-    color: var(--primary-color);
+    color: var(--black);
     font-weight: 500;
+    border-bottom: 2px solid var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.resource-link:hover {
+    background-color: var(--primary-color);
+    padding: 2px 8px;
+    margin: 1rem -8px 0;
+    border-bottom: 2px solid var(--black);
 }
 
 .document-library {
@@ -2026,8 +2145,10 @@ section {
 }
 
 .links-category h3 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 1.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 0.5rem;
 }
 
 .resource-links {
@@ -2130,9 +2251,16 @@ section {
 }
 
 .contact-link {
-    color: var(--primary-color);
+    color: var(--black);
     font-weight: 500;
     font-size: 1.125rem;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+    background-color: var(--primary-color);
+    padding: 2px 8px;
+    margin: 0 -8px;
 }
 
 .contact-form-section {
@@ -2197,9 +2325,13 @@ section {
 }
 
 .contact-detail {
-    color: var(--primary-color);
+    color: var(--black);
+    background-color: var(--primary-color);
     font-weight: 500;
     margin: 0.5rem 0;
+    padding: 0.25rem 0.75rem;
+    border-radius: 6px;
+    display: inline-block;
 }
 
 .location-section {
@@ -2256,8 +2388,10 @@ section {
 }
 
 .partner-location h4 {
-    color: var(--primary-color);
+    color: var(--black);
     margin-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.25rem;
 }
 
 .partner-services {
@@ -2366,7 +2500,14 @@ section {
     .funding-bar {
         height: 60px;
         padding: 0 1rem;
-        min-width: 280px;
+        min-width: unset;
+        width: 100% !important;
+        max-width: 100%;
+    }
+    
+    .funding-bars {
+        overflow-x: hidden;
+        padding-right: 0;
     }
     
     .funding-label {
